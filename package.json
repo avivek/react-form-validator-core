@@ -5,25 +5,16 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel ./src -d ./lib --presets=es2015,react,stage-2",
-    "prepublish": "npm run build",
     "lint": "eslint src/**",
-    "prepare":"babel ./src -d ./lib --presets=es2015,react,stage-2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NewOldMax/react-form-validator-core.git"
+    "prepare":"npm run build"
   },
   "keywords": [
     "react",
     "form",
     "validation"
   ],
-  "author": "NewOldMax",
+  "author": "vivek",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NewOldMax/react-form-validator-core/issues"
-  },
-  "homepage": "https://github.com/NewOldMax/react-form-validator-core#readme",
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
