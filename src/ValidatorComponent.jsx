@@ -29,7 +29,6 @@ class ValidatorComponent extends React.Component {
 
     componentOnChange = (event) =>
     {
-        console.log('the base on Change has been called now');
         if(event)
         {
             event.preventDefault();
@@ -43,7 +42,6 @@ class ValidatorComponent extends React.Component {
 
     componentOnBlur = (event)=>
     {
-        console.log('the base on blur has been called now');
         if(event)
         {
             event.preventDefault();
