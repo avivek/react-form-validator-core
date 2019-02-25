@@ -1,12 +1,13 @@
 {
-  "name": "react-form-validator-core",
-  "version": "0.7.1",
+  "name": "react-form-validator-core-vivek",
+  "version": "0.1.1",
   "description": "Core validator component for react forms.",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel ./src -d ./lib --presets=es2015,react,stage-2",
     "lint": "eslint src/**",
-    "prepare":"npm run build"
+    "prepare":"npm run build",
+    "prepublish":"npm run build"
   },
   "keywords": [
     "react",
