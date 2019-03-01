@@ -29,7 +29,7 @@ class ValidatorComponent extends React.Component {
 
     componentOnChange = (event) =>
     {
-        if(event)
+        if(event && event.preventDefault)
         {
             event.preventDefault();
         }
@@ -42,7 +42,7 @@ class ValidatorComponent extends React.Component {
 
     componentOnBlur = (event)=>
     {
-        if(event)
+        if(event && event.preventDefault)
         {
             event.preventDefault();
         }

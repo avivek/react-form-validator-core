@@ -58,6 +58,7 @@ const validations = {
     isFile: value => value instanceof File,
     maxFileSize: (value, max) => validations.isFile(value) && value.size <= parseInt(max, 10),
     allowedExtensions: (value, fileTypes) => validations.isFile(value) && fileTypes.split(',').indexOf(value.type) !== -1,
+    isStringEqual:(value,toCompare) => (isEmpty(value) && isEmpty(toCompare)) || value === toCompare
 };
 
 module.exports = validations;
