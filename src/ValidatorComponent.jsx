@@ -106,27 +106,28 @@ class ValidatorComponent extends React.Component {
         this.debounceTime = this.context.form.debounceTime;
         this.validateDebounced = debounce(this.validate, this.debounceTime);
     }
-
-    validate = (value, includeRequired = false, dryRun = false) => {
-        const validations = Promise.all(
-            this.state.validators.map(validator => ValidatorForm.getValidator(validator, value, includeRequired)),
-        );
-
-        validations.then((results) => {
-            this.invalid = [];
-            let valid = true;
-            results.forEach((result, key) => {
-                if (!result) {
-                    valid = false;
-                    this.invalid.push(key);
-                }
-            });
+//breaks on first error, i.e. if its not a valid email then we will not be hitting server to check if this is unique
+    validate = async (value, includeRequired = false, dryRun = false) => {
+        let isComponentValid = true;
+        let invalidItems = [];
+        for (let i=0; i < this.state.validators.length; i++)
+        {
+            let validator = this.state.validators[i];
+            let result = await ValidatorForm.getValidator(validator, value, includeRequired);
+            if(!result)
+            {
+                invalidItems.push(i);
+                isComponentValid = false;
+                break;
+            }
+        }
+            this.invalid = invalidItems;
             if (!dryRun) {
-                this.setState({ isValid: valid}, () => {
+                this.setState({ isValid: isComponentValid}, () => {
                     this.props.validatorListener(this.state.isValid);
                 });
             }
-        });
+        
     }
 
     isValid = () => this.state.isValid;
